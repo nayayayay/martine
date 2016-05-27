@@ -1,0 +1,21 @@
+{
+  "name": "martine",
+  "authors": [
+    {
+      "name": "Simon AUBER",
+      "email": "simon.auber@hetic.net"
+    },
+    {
+      "name": "Kylian LE METTE",
+      "email": "kylian.le-mette@hetic.net"
+    }
+  ],
+  "autoload": {
+    "psr-4": {
+      "Martine\\": "src/",
+      "Controllers\\": "controllers/",
+      "Models\\": "models/",
+      "Tests": "tests/"
+    }
+  }
+}
