@@ -1,5 +1,6 @@
 {
   "name": "martine",
+  "description": "A PHP 7 framework for lazy unicorns.",
   "authors": [
     {
       "name": "Simon AUBER",
@@ -15,7 +16,7 @@
       "Martine\\": "src/",
       "Controllers\\": "controllers/",
       "Models\\": "models/",
-      "Tests": "tests/"
+      "Test\\": "tests/"
     }
   }
 }
