@@ -55,4 +55,34 @@ class RequestTest extends PHPUnit_Framework_TestCase
         $_SERVER["HTTP_ACCEPT_ENCODING"] = 'gzip, deflate, sdch';
         $this->assertEquals(['gzip', 'deflate', 'sdch'], $request->getAcceptEncoding());
     }
+
+    /**
+     * @param Request $request
+     * @depends testCreateRequest
+     */
+    public function testGetUserAgent(Request $request)
+    {
+        $_SERVER["HTTP_USER_AGENT"] = 'Mozilla/5.0 (Macintosh; Intel Mac OS X 10_11_4) 
+            AppleWebKit/537.36 (KHTML, like Gecko) Chrome/50.0.2661.102 Safari/537.36';
+        $this->assertEquals($_SERVER["HTTP_USER_AGENT"], $request->getUserAgent());
+    }
+
+    /**
+     * @param Request $request
+     * @depends testCreateRequest
+     */
+    public function testGetReferer(Request $request)
+    {
+        $_SERVER["HTTP_REFERER"] = 'http://www.martine.com/PHP-7';
+        $this->assertEquals('http://www.martine.com/PHP-7',$request->getReferer());
+    }
+
+    /**
+     * @param Request $request
+     * @depends testCreateRequest
+     */
+    public function testGetRefererWithoutReferer(Request $request)
+    {
+        $this->assertNull($request->getReferer());
+    }
 }
