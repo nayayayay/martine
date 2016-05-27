@@ -18,5 +18,8 @@
       "Models\\": "models/",
       "Test\\": "tests/"
     }
+  },
+  "require": {
+    "phpunit/phpunit": "^5.3"
   }
 }
