@@ -19,7 +19,7 @@ class Request
      */
     public function getMethod(): string
     {
-        return $_SERVER["REQUEST_METHOD"];
+        return $_SERVER['REQUEST_METHOD'];
     }
 
     /**
@@ -27,7 +27,7 @@ class Request
      */
     public function getRequestTime(): int
     {
-        return $_SERVER["REQUEST_TIME"];
+        return $_SERVER['REQUEST_TIME'];
     }
 
     /**
@@ -35,8 +35,8 @@ class Request
      */
     public function getAcceptLanguage(): array
     {
-        $acceptLanguages = str_replace(';',',',$_SERVER["HTTP_ACCEPT_LANGUAGE"]);
-        $acceptLanguages = explode(',',$acceptLanguages);
+        $acceptLanguages = str_replace(';', ',', $_SERVER['HTTP_ACCEPT_LANGUAGE']);
+        $acceptLanguages = explode(',', $acceptLanguages);
         $languages = [];
         foreach ($acceptLanguages as $language) {
             if (strpos($language, 'q=') === false) {
@@ -51,18 +51,40 @@ class Request
      */
     public function getAcceptEncoding(): array
     {
-        $acceptEncoding = str_replace(" ", "",$_SERVER["HTTP_ACCEPT_ENCODING"]);
-        $acceptEncoding = explode(',',$acceptEncoding);
+        $acceptEncoding = str_replace(' ', '', $_SERVER['HTTP_ACCEPT_ENCODING']);
+        $acceptEncoding = explode(',', $acceptEncoding);
         return $acceptEncoding;
     }
-    
-    public function getUserAgent(): string 
+
+    /**
+     * @return string
+     */
+    public function getUserAgent(): string
     {
-        return $_SERVER["HTTP_USER_AGENT"];
+        return $_SERVER['HTTP_USER_AGENT'];
     }
 
+    /**
+     * @return mixed
+     */
     public function getReferer()
     {
-        return $_SERVER["HTTP_REFERER"] ?? NULL;
+        return $_SERVER['HTTP_REFERER'] ?? NULL;
+    }
+
+    /**
+     * @return array
+     */
+    public function getAcceptContentType(): array
+    {
+        $acceptContentType = str_replace(';', ',', $_SERVER['HTTP_ACCEPT']);
+        $acceptContentType = explode(',', $acceptContentType);
+        $ContentType = [];
+        foreach ($acceptContentType as $content) {
+            if (strpos($content, 'q=') === false) {
+                $ContentType[] = $content;
+            }
+        }
+        return $ContentType;
     }
 }
