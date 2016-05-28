@@ -40,10 +40,10 @@ class RequestTest extends PHPUnit_Framework_TestCase
     public function testGetAcceptLanguage(Request $request)
     {
         $_SERVER['HTTP_ACCEPT_LANGUAGE'] = 'FR-fr,fr;q=0.8,en';
-        $this->assertEquals(['FR-fr','fr','en'],$request-> getAcceptLanguage());
+        $this->assertEquals(['FR-fr', 'fr', 'en'], $request->getAcceptLanguage());
 
         $_SERVER['HTTP_ACCEPT_LANGUAGE'] = 'nl,en-gb;q=0.8,en;q=0.6,fr;q=0.4,fr-ca;q=0.2';
-        $this->assertEquals(['nl','en-gb','en','fr','fr-ca'], $request->getAcceptLanguage());
+        $this->assertEquals(['nl', 'en-gb', 'en', 'fr', 'fr-ca'], $request->getAcceptLanguage());
     }
 
     /**
@@ -74,7 +74,7 @@ class RequestTest extends PHPUnit_Framework_TestCase
     public function testGetReferer(Request $request)
     {
         $_SERVER['HTTP_REFERER'] = 'http://www.martine.com/PHP-7';
-        $this->assertEquals('http://www.martine.com/PHP-7',$request->getReferer());
+        $this->assertEquals('http://www.martine.com/PHP-7', $request->getReferer());
     }
 
     /**
@@ -93,6 +93,6 @@ class RequestTest extends PHPUnit_Framework_TestCase
     public function testGetAcceptContentType(Request $request)
     {
         $_SERVER['HTTP_ACCEPT'] = 'text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,*/*;q=0.8';
-        $this->assertEquals(['text/html','application/xhtml+xml','application/xml','image/webp','*/*'], $request->getAcceptContentType());
+        $this->assertEquals(['text/html', 'application/xhtml+xml', 'application/xml', 'image/webp', '*/*'], $request->getAcceptContentType());
     }
 }
