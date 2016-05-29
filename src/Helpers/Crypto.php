@@ -8,12 +8,15 @@ namespace Martine\Helpers;
 class Crypto
 {
     /**
+     * Random key of the Martine application
+     *
      * @var string
      */
     private $appKey;
 
     /**
      * Crypto constructor.
+     *
      * @param string $appKey
      */
     public function __construct(string $appKey)
@@ -22,7 +25,7 @@ class Crypto
     }
 
     /**
-     * Crypt a string with a appKey
+     * Crypt a string with a $appKey
      * 
      * @param string $str
      * @return string
@@ -33,14 +36,14 @@ class Crypto
     }
 
     /**
-     * Checks if a given string matches a given crypt
+     * Check if a given string matches a given crypt
      *
-     * @param string $knowStr
+     * @param string $knownStr
      * @param string $cryptedStr
      * @return bool
      */
-    public function equals(string $knowStr, string $cryptedStr): bool
+    public function equals(string $knownStr, string $cryptedStr): bool
     {
-        return hash_equals($this->encrypt($knowStr), $cryptedStr);
+        return hash_equals($this->encrypt($knownStr), $cryptedStr);
     }
 }
