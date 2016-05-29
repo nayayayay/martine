@@ -33,6 +33,6 @@ class CryptoTest extends PHPUnit_Framework_TestCase
      */
     public function testEquals(Crypto $crypto, $cryptedStr)
     {
-        $this->assertTrue($crypto->equals($crypto->encrypt('martine'), $cryptedStr));
+        $this->assertTrue($crypto->equals('martine', $cryptedStr));
     }
 }

@@ -22,6 +22,8 @@ class Crypto
     }
 
     /**
+     * Crypt a string with a appKey
+     * 
      * @param string $str
      * @return string
      */
@@ -31,12 +33,14 @@ class Crypto
     }
 
     /**
+     * Checks if a given string matches a given crypt
+     *
      * @param string $knowStr
      * @param string $cryptedStr
      * @return bool
      */
     public function equals(string $knowStr, string $cryptedStr): bool
     {
-        return hash_equals($knowStr, $cryptedStr);
+        return hash_equals($this->encrypt($knowStr), $cryptedStr);
     }
 }
