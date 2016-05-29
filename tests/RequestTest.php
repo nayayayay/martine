@@ -95,4 +95,106 @@ class RequestTest extends PHPUnit_Framework_TestCase
         $_SERVER['HTTP_ACCEPT'] = 'text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,*/*;q=0.8';
         $this->assertEquals(['text/html', 'application/xhtml+xml', 'application/xml', 'image/webp', '*/*'], $request->getAcceptContentType());
     }
+
+    /**
+     * @param Request $request
+     * @depends testCreateRequest
+     */
+    public function testGetQueryString(Request $request)
+    {
+        $_SERVER['QUERY_STRING'] = 'framework=martine&php=7';
+        $this->assertEquals('framework=martine&php=7', $request->getQueryString());
+    }
+
+    /**
+     * @param Request $request
+     * @depends testCreateRequest
+     */
+    public function testGetRemoteIp(Request $request)
+    {
+        $_SERVER['REMOTE_ADDR'] = '::1';
+        $this->assertEquals('::1', $request->getRemoteIp());
+    }
+
+    /**
+     * @param Request $request
+     * @depends testCreateRequest
+     */
+    public function testGetRemotePort(Request $request)
+    {
+        $_SERVER['REMOTE_PORT'] = '56475';
+        $this->assertEquals('56475', $request->getRemotePort());
+    }
+
+    /**
+     * @param Request $request
+     * @depends testCreateRequest
+     */
+    public function testGetServerSoftware(Request $request)
+    {
+        $_SERVER['SERVER_SOFTWARE'] = 'Apache/2.2.29 (Unix) mod_wsgi/3.5 Python/2.7.10 PHP/7.0.0 ';
+        $this->assertEquals('Apache/2.2.29 (Unix) mod_wsgi/3.5 Python/2.7.10 PHP/7.0.0 ', $request->getServerSoftware());
+    }
+
+    /**
+     * @param Request $request
+     * @depends testCreateRequest
+     */
+    public function testGetServerProtocol(Request $request)
+    {
+        $_SERVER['SERVER_PROTOCOL'] = 'HTTP/1.1';
+        $this->assertEquals('HTTP/1.1', $request->getServerProtocol());
+    }
+
+    /**
+     * @param Request $request
+     * @depends testCreateRequest
+     */
+    public function testGetHttpConnection(Request $request)
+    {
+        $_SERVER['HTTP_CONNECTION'] = 'keep-alive';
+        $this->assertEquals('keep-alive', $request->getHttpConnection());
+    }
+
+    /**
+     * @param Request $request
+     * @depends testCreateRequest
+     */
+    public function testGet(Request $request)
+    {
+        $_GET['framework'] = 'martine';
+        $_GET['php'] = '7.0';
+        $this->assertEquals('martine', $request->get('framework'));
+        $this->assertEquals('7.0', $request->get('php'));
+    }
+
+    /**
+     * @param Request $request
+     * @depends testCreateRequest
+     */
+    public function testGetNotExist(Request $request)
+    {
+        $this->assertNull($request->get('Failed'));
+    }
+
+    /**
+     * @param Request $request
+     * @depends testCreateRequest
+     */
+    public function testPost(Request $request)
+    {
+        $_POST['framework'] = 'martine';
+        $_POST['php'] = '7.0';
+        $this->assertEquals('martine', $request->post('framework'));
+        $this->assertEquals('7.0', $request->post('php'));
+    }
+
+    /**
+     * @param Request $request
+     * @depends testCreateRequest
+     */
+    public function testPostNotExist(Request $request)
+    {
+        $this->assertNull($request->post('failed'));
+    }
 }

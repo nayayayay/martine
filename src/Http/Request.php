@@ -43,6 +43,7 @@ class Request
                 $languages[] = $language;
             }
         }
+
         return $languages;
     }
 
@@ -53,6 +54,7 @@ class Request
     {
         $acceptEncoding = str_replace(' ', '', $_SERVER['HTTP_ACCEPT_ENCODING']);
         $acceptEncoding = explode(',', $acceptEncoding);
+
         return $acceptEncoding;
     }
 
@@ -85,6 +87,73 @@ class Request
                 $ContentType[] = $content;
             }
         }
+
         return $ContentType;
+    }
+
+    /**
+     * @return string
+     */
+    public function getQueryString(): string
+    {
+        return $_SERVER['QUERY_STRING'];
+    }
+
+    /**
+     * @return string
+     */
+    public function getRemoteIp(): string
+    {
+        return $_SERVER['REMOTE_ADDR'];
+    }
+
+    /**
+     * @return string
+     */
+    public function getRemotePort(): string
+    {
+        return $_SERVER['REMOTE_PORT'];
+    }
+
+    /**
+     * @return string
+     */
+    public function getServerSoftware(): string
+    {
+        return $_SERVER['SERVER_SOFTWARE'];
+    }
+
+    /**
+     * @return string
+     */
+    public function getServerProtocol(): string
+    {
+        return $_SERVER['SERVER_PROTOCOL'];
+    }
+
+    /**
+     * @return string
+     */
+    public function getHttpConnection(): string
+    {
+        return $_SERVER['HTTP_CONNECTION'];
+    }
+
+    /**
+     * @param string $key
+     * @return mixed
+     */
+    public function get(string $key)
+    {
+        return $_GET[$key] ?? NULL;
+    }
+
+    /**
+     * @param string $key
+     * @return mixed
+     */
+    public function post(string $key)
+    {
+        return $_POST[$key] ?? NULL;
     }
 }
