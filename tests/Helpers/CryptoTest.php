@@ -35,4 +35,15 @@ class CryptoTest extends PHPUnit_Framework_TestCase
     {
         $this->assertTrue($crypto->equals('martine', $cryptedStr));
     }
+
+    /**
+     * @param Crypto $crypto
+     * @param $cryptedStr
+     * @depends testCreateCrypto
+     * @depends testCrypt
+     */
+    public function testNotEquals(Crypto $crypto, $cryptedStr)
+    {
+        $this->assertFalse($crypto->equals('not matching', $cryptedStr));
+    }
 }
