@@ -15,6 +15,8 @@ class Request
     }
 
     /**
+     * Get Server Request Method
+     * 
      * @return string
      */
     public function getMethod(): string
@@ -23,6 +25,8 @@ class Request
     }
 
     /**
+     * Get Request Time
+     * 
      * @return int
      */
     public function getRequestTime(): int
@@ -31,6 +35,8 @@ class Request
     }
 
     /**
+     * Get Accept Language
+     * 
      * @return array
      */
     public function getAcceptLanguage(): array
@@ -48,6 +54,8 @@ class Request
     }
 
     /**
+     * Get Accept Encoding
+     * 
      * @return array
      */
     public function getAcceptEncoding(): array
@@ -59,6 +67,8 @@ class Request
     }
 
     /**
+     * Get User Agent
+     * 
      * @return string
      */
     public function getUserAgent(): string
@@ -67,6 +77,8 @@ class Request
     }
 
     /**
+     * Get Referer link if exist
+     * 
      * @return mixed
      */
     public function getReferer()
@@ -75,6 +87,8 @@ class Request
     }
 
     /**
+     * Get Accept Content Type
+     * 
      * @return array
      */
     public function getAcceptContentType(): array
@@ -92,6 +106,8 @@ class Request
     }
 
     /**
+     * Get Query String
+     * 
      * @return string
      */
     public function getQueryString(): string
@@ -100,6 +116,8 @@ class Request
     }
 
     /**
+     * Get Remote Ip
+     * 
      * @return string
      */
     public function getRemoteIp(): string
@@ -108,6 +126,8 @@ class Request
     }
 
     /**
+     * Get Remote Port
+     * 
      * @return string
      */
     public function getRemotePort(): string
@@ -116,6 +136,8 @@ class Request
     }
 
     /**
+     * Get Server Software
+     * 
      * @return string
      */
     public function getServerSoftware(): string
@@ -124,6 +146,8 @@ class Request
     }
 
     /**
+     * Get Server Protocol
+     * 
      * @return string
      */
     public function getServerProtocol(): string
@@ -132,6 +156,8 @@ class Request
     }
 
     /**
+     * Get Http Connection
+     * 
      * @return string
      */
     public function getHttpConnection(): string
@@ -140,6 +166,8 @@ class Request
     }
 
     /**
+     * Get a get parameter
+     * 
      * @param string $key
      * @return mixed
      */
@@ -149,6 +177,8 @@ class Request
     }
 
     /**
+     * Get a post parameter  
+     *
      * @param string $key
      * @return mixed
      */
